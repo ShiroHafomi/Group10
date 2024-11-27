@@ -1,0 +1,29 @@
+
+<link rel="stylesheet" href="/static/styles.css">
+
+<h1>List of Users</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>First Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.first_name }}</td>
+            <td>
+                <a href="{{ url_for('admin.edit_user', user_id=user.id) }}">Edit</a> | 
+                <a href="{{ url_for('admin.delete_user', user_id=user.id) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<br>
+
